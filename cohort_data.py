@@ -14,10 +14,26 @@ def all_houses(filename):
     Return:
       - set[str]: a set of strings
     """
-
+    
     houses = set()
+    for line in open(filename):
+      line_list = line.split("|") 
+      houses.add(line_list[2])
+    
+    houses.remove("")
 
-    # TODO: replace this with your code
+
+    # houses = set()
+
+    # cohort_data = open(filename)
+
+    # for line in cohort_data:
+    #     house = line.rstrip().split("|")[2]
+    #     if house:
+    #         houses.add(house)
+
+
+
 
     return houses
 
@@ -51,8 +67,14 @@ def students_by_cohort(filename, cohort="All"):
     """
 
     students = []
-
-    # TODO: replace this with your code
+  
+    data = open(filename)
+    
+    for line in data:
+      fname, lname, house, advisor, stud_cohort = line.rstrip().split("|")
+      
+      if stud_cohort not in ("I", "G") and cohort in ("All", stud_cohort):
+        students.append(f"{fname} {lname}")
 
     return sorted(students)
 
@@ -95,6 +117,10 @@ def all_names_by_house(filename):
     slytherin = []
     ghosts = []
     instructors = []
+
+    houses = [dumbledores_army, 
+    gryffindor, hufflepuff, ravenclaw, slytherin, ghosts, instructors]
+
 
     # TODO: replace this with your code
 
